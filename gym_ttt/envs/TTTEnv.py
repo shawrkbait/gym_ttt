@@ -13,6 +13,19 @@ class TTTEnv(gym.Env):
     # 3x3 grid, 0=none, 1=O, 2=X
     self.observation_space = spaces.Box(low=0, high=2, shape=[3,3,1], dtype=np.uint8) # 3x3 grid
     self.observation = [0,0,0,0,0,0,0,0,0]
+    self.winners = [
+    # horizontal
+      [0,1,2],
+      [3,4,5],
+      [6,7,8],
+    # vertical
+      [0,3,6],
+      [1,4,7],
+      [2,5,8],
+    # cross
+      [0,4,8],
+      [2,4,6]
+    ]
 
   def step(self, action):
     reward = 0
@@ -22,20 +35,11 @@ class TTTEnv(gym.Env):
 
     self.observation[action] = 1
 
-    # horizontal
-    if (np.array_equal(a[0:3], WIN) or
-       np.array_equal(a[3:6], WIN) or
-       np.array_equal(a[6:9], WIN) or
-    # vertical
-       np.array_equal([a[0],a[3],a[6]], WIN) or
-       np.array_equal([a[1],a[4],a[7]], WIN) or
-       np.array_equal([a[2],a[5],a[8]], WIN) or
-    # cross
-       np.array_equal([a[0],a[4],a[8]], WIN) or
-       np.array_equal([a[2],a[4],a[6]], WIN)
-       ):
-      done = True
-      reward = 1
+    for x,y,z in self.winners:
+      if(self.observation[x] != 0 and
+         self.observation[x] == self.observation[y] == self.observation[z]):
+        done = True
+        reward = 1
     return self.observation, reward, done, {}
 
   def _get_obs(self):

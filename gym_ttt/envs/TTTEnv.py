@@ -26,7 +26,7 @@ class TTTEnv(gym.Env):
       [0,4,8],
       [2,4,6]
     ]
-    self.playerTurn = 1
+    self.playerTurn = 0
 
   def step(self, action, token):
     reward = 0

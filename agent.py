@@ -1,12 +1,9 @@
 import random
 
 class Agent():
-  def __init__(self, token):
-    self.token = token
+  #def __init__(self):
 
   def act(self, observation):
-    playerTurn, board = observation
-    action = random.randint(0,8)
-    while board[action] != 0:
-      action = random.randint(0,8)
+    playerTurn, valid_actions, board = observation
+    action = random.choice(valid_actions)
     return action

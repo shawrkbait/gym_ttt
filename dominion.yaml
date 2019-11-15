@@ -1,0 +1,138 @@
+cards:
+  - name: Copper
+    cost: 0
+    money: 1
+  - name: Curse
+    cost: 0
+    vp: -1
+  - name: Estate
+    cost: 2
+    vp: 1
+  - name: Silver
+    cost: 3
+    money: 2
+  - name: Duchy
+    cost: 5
+    vp: 3
+  - name: Gold
+    cost: 6
+    money: 3
+  - name: Province
+    cost: 8
+    vp: 6
+  - name: Cellar
+    cost: 2
+    action:
+      - addactions: 1
+    additional:
+      - discardReplace: [0,999999999]
+  - name: Chapel
+    cost: 2
+    action:
+      - trashOption: [0,4]
+  - name: Moat
+    cost: 2
+    action:
+      - addcards: 2
+    additional:
+      - blockAttack
+  - name: Harbringer
+    cost: 3
+    action:
+      - addactions: 1
+      - addcards: 1
+    additional:
+      - addAnyFromDiscard: [0,1]
+  - name: Merchant
+    cost: 3
+    action:
+      - addactions: 1
+      - addcards: 1
+    additional:
+      - firstSilver: 1
+  - name: Vassal
+    cost: 3
+    action:
+      - addmoney: 2
+    additional:
+      - discardTopPlayAction: [1,1]
+  - name: Village
+    cost: 3
+    action:
+      - addactions: 2
+      - addcards: 1
+  - name: Workshop
+    cost: 3
+    action:
+      - gainCardCost: [0,4]
+  - name: Beaurocrat
+    cost: 4
+    action:
+      - gainSilver
+      - oppVictoryToDeckOrReveal
+  - name: Gardens
+    cost: 4
+    vp: 1per10cards
+  - name: Malitia
+    cost: 4
+    action:
+      - addmoney: 2
+    additional:
+      - oppDiscardTo: 3
+  - name: Moneylender
+    cost: 4
+    additional:
+      - trashCopperFor: 3
+  - name: Poacher
+    cost: 4
+    action:
+      - addactions: 1
+      - addcards: 1
+      - addmoney: 1
+    additional:
+      - discardPerEmptySupply
+  - name: Remodel
+    cost: 4
+    action:
+      - trashCardForPlus2
+  - name: Smithy
+    cost: 4
+    action:
+      - addcards: 3
+  - name: Throne Room
+    cost: 4
+    action:
+      - playActionTwice
+  - name: Bandit
+    cost: 5
+    action:
+      - gainGold
+      - oppRevealTopXTrashBigMoneyDiscardRest: 2
+  - name: Council Room
+    cost: 5
+    action:
+      - addcards: 4
+      - addbuys: 1
+      - oppDraw: 1
+  - name: Festival
+    cost: 5
+    action:
+      - addmoney: 2
+      - addactions: 2
+      - addbuys: 1
+  - name: Laboratory
+    cost: 5
+    action:
+      - addcards: 2
+      - addactions: 1
+  - name: Library
+    cost: 5
+    action:
+      - drawToXOptionToSkipActions: 7
+  - name: Market
+    cost: 5
+    action:
+      - addmoney: 1
+      - addactions: 1
+      - addbuys: 1
+      - addcards: 1
